@@ -1,0 +1,16 @@
+<div id="detail" class="container mt-6" *ngIf="product$ | async as product">
+    <div class="center">
+      <h1 id="img" class="display-4 center">Produit {{ product.title }}</h1>
+    </div>
+    <div id="img" class="product-img">
+      <img [src]="product.imgUrl"><br>
+    </div>
+    <div class="product-info">
+      <span>{{ product.description }}</span><br>
+    </div>
+    <div class="product-info">
+      <span>Prix du produit : {{ product.price }}€</span><br>
+    </div>
+    <button type="button" class="btn btn-info" (click)="onStore(product)">Ajouter au panier</button>
+   
+</div>

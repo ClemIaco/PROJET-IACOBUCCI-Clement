@@ -1,0 +1,24 @@
+[
+    {
+      "id": "1",
+      "title": "Brebis égarée",
+      "description": "Brebis égarée au Sud de Niedershaeffolsheim, bon prix.",
+      "price" : 200,
+      "imgUrl": "https://www.linfodurable.fr/sites/linfodurable/files/styles/landscape_w800/public/2019-07/cr%20Iuliia%20Khabibullina.jpg?h=2021fd5b&itok=I5VCYjEK"
+    },
+    {
+      "id": "2",
+      "title": "Rainette de Cuba",
+      "description" : "Rainette trouvée en Amérique du Sud, bon substituant à la lampe.",
+      "price" : 50,
+      "imgUrl": "http://www.regardsurlemonde.fr/blog/wp-content/uploads/2015/12/grenouille_rare_et_etonnante_02-600x451.jpg"
+    },
+    {
+      "id": "3",
+      "title" : "Dindon royal",
+      "description" : "Un dindon royal aux couleurs de la cigogne d'Alsace.",
+      "price" : 100,
+      "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Fancy_turkey.jpg/280px-Fancy_turkey.jpg"
+  
+    }
+]

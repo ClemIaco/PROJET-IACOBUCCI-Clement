@@ -1,0 +1,12 @@
+<div class="row justify-content-center" id="products-list">
+    <div class="card col-sm-2" style="width: 20rem;" *ngFor="let product of products | async">
+        <img class="card-img-top" [src]="product.imgUrl" [alt]="product.title">
+        <div class="card-body">
+            <h5 class="card-title">{{product.title}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            <p class="card-text"> Prix: {{product.price}}€</p>
+            <button id="btnDetails" type="button" class="btn btn-info" [routerLink]="['/detail', product.id]">Détails du produit</button>
+            <button type="button" class="btn btn-primary" (click)="onStore(product)">Ajouter au panier</button>
+        </div>
+    </div>
+</div>

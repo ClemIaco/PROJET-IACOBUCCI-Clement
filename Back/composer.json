@@ -1,0 +1,26 @@
+{
+    "name": "cleme/back",
+    "authors": [
+        {
+            "name": "Clement IACOBUCCI",
+            "email": "clement.iacobucci@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "4.*",
+        "php-di/php-di": "^6.3",
+        "slim/psr7": "^1.2",
+        "tuupola/slim-jwt-auth": "^3.5",
+        "vlucas/phpdotenv": "^5.2",
+        "doctrine/orm": "^2.8.1",
+        "symfony/yaml": "2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        },
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}

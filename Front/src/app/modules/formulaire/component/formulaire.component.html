@@ -1,0 +1,144 @@
+<h2 id="titlePage">Formulaire de saisie de compte client</h2>
+
+<div class="container">
+    <form *ngIf="formOk == false" id="formSubClient" class="form-example" [formGroup]="customerForm" (ngSubmit)="onSubmit()" [appMatchPassword]="['password','confirmPassword']">
+
+        <!-- CIVILITY -->
+        <div class="form-group custom-control-inline">
+        <label for="civility">Civilité : <span style="color:red">*</span> </label>
+        <div class="form-group" *ngFor="let item of civility">
+        <input [ngStyle]="{'margin-left': '20px'}" id="{{item}}" type="radio" value="{{item}}" formControlName="civility">
+        <label for="{{item}}">{{ item }}</label>
+        </div>
+        </div>
+
+        <!-- NAME -->
+        <div class="form-group">
+        <label for="name">Nom : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" formControlName="name" placeholder="Votre nom...">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+            <span class="text-danger" *ngIf="name.errors.required">    
+                Le champ Nom est requis
+            </span>
+            <span class="text-danger" *ngIf="name.errors?.number">    
+                Veuillez entrer un nom valide
+            </span>
+        </div> 
+        </div>
+
+        <!-- FIRSTNAME -->
+        <div class="form-group">
+        <label for="firstname">Prénom : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" formControlName="firstname" placeholder="Votre prénom...">
+        <span class="text-danger" *ngIf="(firstname.touched || firstname.dirty) && firstname.errors?.required">    
+            Le champ Prénom est requis   
+        </span>
+        <span class="text-danger" *ngIf="(name.touched || firstname.dirty) && name.errors?.number">    
+            Veuillez entrer un prénom valide
+        </span>
+        </div>
+
+        <!-- ADDRESS -->
+        <div class="form-group">
+        <label for="address">Adresse : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" formControlName="address" placeholder="Votre adresse...">
+        <span class="text-danger" *ngIf="(address.touched || address.dirty) && address.errors?.required">    
+            Le champ Adresse est requis   
+        </span>
+        </div>
+        
+        <!-- POSTAL CODE -->
+        <div class="form-group">
+        <label for="postalCode">Code postal : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" formControlName="postalCode" placeholder="Seulement 5 chiffres...">
+        <span class="text-danger" *ngIf="(postalCode.touched || postalCode.dirty) && postalCode.errors?.required">    
+            Le champ Code postal est requis   
+        </span>
+        <span class="text-danger" *ngIf="(postalCode.touched || postalCode.dirty) && postalCode.errors?.invalidPostalCode">    
+            Veuillez entrer un code postal valide
+        </span>
+        </div>
+
+        <!-- CITY -->
+        <div class="form-group">
+        <label for="city">Ville : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" formControlName="city" placeholder="Votre ville...">
+        <span class="text-danger" *ngIf="(city.touched || city.dirty) && city.errors?.required">    
+            Le champ Ville est requis   
+        </span>
+        <span class="text-danger" *ngIf="(city.touched || city.dirty) && city.errors?.number">    
+            Veuillez entrer un nom de ville valide
+        </span>
+        </div>
+
+        <!-- COUNTRY -->
+        <div class="form-group">
+        <label for="country">Pays : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" formControlName="country" placeholder="Votre pays...">
+        <span class="text-danger" *ngIf="(country.touched || country.dirty) && country.errors?.required">    
+            Le champ Pays est requis   
+        </span>
+        <span class="text-danger" *ngIf="(country.touched || country.dirty) && country.errors?.number">    
+            Veuillez entrer un nom de pays valide
+        </span>
+        </div>
+
+        <!-- PHONE NUMBER -->
+        <div class="form-group">
+        <label for="phone">Téléphone : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Seulement 10 chiffres..." [value]="phoneNumber.value | phonePipe">
+        <span class="text-danger" *ngIf="(phoneNumber.touched || phoneNumber.dirty) && phoneNumber.errors?.required">    
+            Le champ Téléphone est requis   
+        </span>
+        <span class="text-danger" *ngIf="(phoneNumber.touched || phoneNumber.dirty) && phoneNumber.errors?.letters">    
+            Veuillez entrer un numéro de téléphone valide   
+        </span>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form-group">
+        <label for="email">Email : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" formControlName="email" placeholder="Votre email...">
+        <span class="text-danger" *ngIf="(email.touched || email.dirty) && email.errors?.required">    
+             Le champ Email est requis   
+        </span>
+        <span class="text-danger" *ngIf="(email.touched || email.dirty) && email.errors?.invalidEmail">    
+            Veuillez entrer un email valide
+        </span>
+        </div>     
+
+        <!-- LOGIN -->
+        <div class="form-group">
+        <label for="login">Nom d'utilisateur : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" formControlName="login" placeholder="Votre nom sur le site...">
+        <span class="text-danger" *ngIf="(login.touched || login.dirty) && login.errors?.required">    
+            Le champ Nom d'utilisateur est requis   
+        </span>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+        <label for="password">Mot de passe : <span style="color:red">*</span> </label>
+        <input type="password" class="form-control" formControlName="password" placeholder="Votre mot de passe...">
+        <span class="text-danger" *ngIf="(password.touched || password.dirty) && password.errors?.required">    
+            Le champ Mot de passe est requis   
+        </span> 
+        </div>
+
+        <!-- CONFIRM PASSWORD -->
+        <div class="form-group">
+        <label for="confirmPassword">Confirmez le mot de passe : <span style="color:red">*</span> </label>
+        <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Tapez à nouveau votre mot de passe...">
+        </div>
+        <span class="text-danger" *ngIf="(confirmPassword.touched || confirmPassword.dirty) && confirmPassword.errors?.required">    
+            Ce champ est requis   
+        </span>
+        <span class="text-danger" *ngIf="confirmPassword.touched && confirmPassword.errors?.passwordMismatch">    
+            Les mots de passe ne sont pas les mêmes    
+        </span>
+        <button id="btnSubmit" type="submit" class="btn btn-success">Valider</button>
+        <!--<span style="color: red" *ngIf="customerForm.invalid">Veuillez compléter tous les champs</span>-->
+    </form>
+</div>
+
+<app-recapitulatif *ngIf="formOk == true" [client$]="client$"></app-recapitulatif>

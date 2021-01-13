@@ -1,0 +1,18 @@
+.centered {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    color: white;
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+}
+
+#homeImage {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+}
+
+#secondSentence {
+    margin-top: 50px;
+}

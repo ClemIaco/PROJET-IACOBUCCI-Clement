@@ -1,0 +1,35 @@
+<h2 id="titlePage">Formulaire d'authentification</h2>
+
+<div class="container">
+    <form id="authForm" class="form-example" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+
+        <!-- LOGIN -->
+        <div class="form-group">
+        <label for="login">Nom d'utilisateur : <span style="color:red">*</span> </label>
+        <input id="login" type="text" class="form-control" formControlName="login" placeholder="Votre nom d'utilisateur...">
+        <div *ngIf="login.invalid && (login.dirty || login.touched)">
+            <span class="text-danger" *ngIf="login.errors?.required">    
+                Le champ Nom d'utilisateur est requis
+            </span>
+        </div>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+        <label for="password">Mot de passe : <span style="color:red">*</span> </label>
+        <input id="password" type="password" class="form-control" formControlName="password" placeholder="Votre mot de passe...">
+        <span class="text-danger" *ngIf="password.invalid && (password.touched || password.dirty) && password.errors?.required">    
+            Le champ Mot de passe est requis   
+        </span>
+
+
+        <div>Voici les identifiants pour se connecter : Nom d'utilisateur : clement  Mot de passe : mdp</div>
+        <div class="text-danger" *ngIf="authForm.invalid && (authForm.touched || authForm.dirty) && authForm.errors?.loginOrPasswordInvalid">Le nom d'utilisateur et/ou le mot de passe est incorrect</div>
+        <div *ngIf="isAuthenticated === true">Vous êtes authentifié</div>
+        <!--<div *ngIf="isAuthenticated === true">Vous êtes authentifié et voici le token JWT : {{ token_JWT }}</div>-->
+        </div><button id="btnSubmit" type="submit" class="btn btn-success">Valider</button>
+        <div *ngIf="(loginResponse$ | async) as response" class="alert alert-danger my-3">
+            <span *ngIf="!response.success">Erreur lors de la connexion</span>
+        </div>
+    </form>
+</div>
