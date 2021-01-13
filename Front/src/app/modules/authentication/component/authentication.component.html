@@ -28,8 +28,8 @@
         <div *ngIf="isAuthenticated === true">Vous êtes authentifié</div>
         <!--<div *ngIf="isAuthenticated === true">Vous êtes authentifié et voici le token JWT : {{ token_JWT }}</div>-->
         </div><button id="btnSubmit" type="submit" class="btn btn-success">Valider</button>
-        <div *ngIf="(loginResponse$ | async) as response" class="alert alert-danger my-3">
+        <!--<div *ngIf="(loginResponse$ | async) as response" class="alert alert-danger my-3">
             <span *ngIf="!response.success">Erreur lors de la connexion</span>
-        </div>
+        </div>-->
     </form>
 </div>

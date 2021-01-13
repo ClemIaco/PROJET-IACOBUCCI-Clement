@@ -81,6 +81,9 @@ class UserController {
             $customer->setEmail($email);
             $customer->setLogin($login);
             $customer->setPassword($password);
+
+            $entityManager->persist($customer);
+            $entityManager->flush();
         }
         catch (Exception $e){
             $entityManager->getConnection()->rollback();
@@ -111,7 +114,7 @@ class UserController {
             $response->getBody()->write(json_encode(["success" => false]));
             return $response
             ->withHeader("Content-Type", "application/json")
-            ->withStatus(401);
+            ->withStatus(204);
         }
 
         $response = TokenController::createJwt($response);
